@@ -5,3 +5,20 @@ services:
     restart: always
     ports:
       - 8080:8080
+  mysql:
+    image: registry.cloud.htl-leonding.ac.at/l.starka/mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    volumes:
+      - database:/var/lib/
+volumes:
+  database:
+
